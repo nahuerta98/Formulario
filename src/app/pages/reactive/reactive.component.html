@@ -1,0 +1,151 @@
+<h4> Agenda de Contactos ☎</h4>
+<!-- Tener la menor cantidad posible de código 
+      Se trabaja del lado del componente.ts -->
+<hr>
+<form autocomplete="off" [formGroup]="forma" (ngSubmit)="guardar()">
+  <p> Por favor, introduzca sus datos en los campos correspondientes. </p>
+
+  <div>
+
+    <div class="form-group row">
+      <label class="col-1 col-form-label">Nombre: </label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Nombre"
+               formControlName="nombre"
+               [class.is-invalid]="nombreNoValido">
+        <small *ngIf="nombreNoValido" class="text-danger">
+                 Este campo es obligatorio
+               </small>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <label class="col-1 col-form-label">Apellidos:</label>
+      <div class="col">
+
+        <input class="form-control"
+               type="text"
+               placeholder="Apellido"
+               formControlName="apellido"
+               [class.is-invalid]="apellidoNoValido">
+        <small *ngIf="apellidoNoValido" class="text-danger">
+                Este campo es obligatorio.
+              </small>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="form-group row">
+    <label class="col-1 col-form-label">Correo:</label>
+    <div class="col">
+
+      <input class="form-control"
+             type="email"
+             placeholder="Correo electrónico"
+             formControlName="correo"
+             [class.is-invalid]="correoNoValido">
+      <small *ngIf="correoNoValido" class="text-danger">
+              Este campo es obligatorio.
+            </small>
+    </div>
+  </div>
+
+
+  <div class="form-group row" formGroupName="direccion">
+    <label class="col-1 col-form-label">Dirección:</label>
+    <div class="form-row col">
+
+      <div class="col ">
+
+        <input type = "text"
+               class = "form-control"
+               placeholder = "Calle"
+               formControlName="calle"
+               [class.is-invalid]="calleNoValido">
+        <small *ngIf="calleNoValido" class="text-danger">
+                Este campo es obligatorio.
+              </small>
+
+      </div>
+      <div class="col">
+
+        <input type = "text"
+               class = "form-control"
+               placeholder = "Núm."
+               formControlName="numero"
+               [class.is-invalid]="numeroNoValido">
+        <small *ngIf="numeroNoValido" class="text-danger">
+                Este campo es obligatorio.
+              </small>
+
+      </div>
+
+      <div class="col">
+
+        <input type = "text"
+               class = "form-control"
+               placeholder = "Colonia"
+               formControlName="colonia"
+               [class.is-invalid]="coloniaNoValido">
+        <small *ngIf="coloniaNoValido" class="text-danger">
+                Este campo es obligatorio.
+              </small>
+
+      </div>
+
+  </div>
+  </div>
+
+  <div class="form-group row" formGroupName="telefono">
+    <label class="col-1 col-form-label">Teléfono:</label>
+    <div class="form-row col">
+
+      <div class="col ">
+
+        <input type = "text"
+               class = "form-control"
+               placeholder = "Móvil"
+               formControlName="movil"
+               [class.is-invalid]="movilNoValido">
+        <small *ngIf="movilNoValido" class="text-danger">
+                El numero debe contener 8 dígitos.
+              </small>
+
+      </div>
+
+      <div class="col ">
+
+        <input type = "text"
+               class = "form-control"
+               placeholder = "Casa">
+      </div>
+
+
+
+
+      </div>
+  </div>
+
+
+
+  <div class="form-group row">
+    <label class="col-1 col-form-label">&nbsp;</label>
+    <div class="input-group col">
+      <button type="submit" class="btn btn-outline-success btn-block">
+        Guardar
+      </button>
+    </div>
+  </div>
+
+</form>
+
+
+<hr>
+<pre>
+  Estado del formulario: {{ forma.value.nombre }}
+  <br>
+</pre>
